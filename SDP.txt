@@ -1,2 +1,11 @@
 needed functionality:
 - if the effect being added is already one of the ones provided, then the actual value is going to be less than expected so factor that in too
+
+how to solve this?
+
+I basically need some kind of data structure which remembers all of the information from the effect_list file
+and if the thing that the algorithm comes to won't work, it will remove that piece of information from it. So
+I need to not use the file itself. I need to turn the file into a dictionary or something. Maybe a dictionary of lists.
+Either a dictionary or a list. I don't know what I'm thinking because I am super tired right now. Maybe I could have a big
+list where each element is each line from the file, and we remove that line if it no worky. What was the keyword for
+retrying a loop? I don't think it was continue. Oh well. I will figure it out tomorrow.
