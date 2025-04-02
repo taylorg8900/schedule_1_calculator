@@ -77,9 +77,70 @@ Here is the structure of the project
 8. Print results in a nice format
 
 # Implementation
-
-
-
+```commandline
+# Function to take the effect_values file and turn into a dictionary to be used to find value of each effect quickly
+def create_values_dict(filename)
+    f = open filename 
+    discard first line
+    dict = {}
+    for line in f
+        fields = split line on commas
+        dict[fields.strip()] = fields[1].strip spaces, newline character, turn into a float too
+    return dict
+```
+```commandline
+# Function to create our mixes dictionary of dictionaries
+def create_modification_dict(filename)
+    f = open filname
+    discard first line
+    dict = {}
+    for line in f
+        fields = split line on commas
+        og_effect = fields[0].strip()
+        new_effect = fields[1].strip()
+        mixer = fields[2].strip()
+        if mixer not in dict
+            do something dict[og_effect] = {}
+        else
+            dict[og_effect[mixer]] = new_effect
+    return dict
+```
+```commandline
+# Function to create a dictionary for our mixer's default effects
+def create_mixer_effects_dict(filename)
+    f = open filename
+    discard first line
+    dict = {}
+    for line in f
+        fields = split line on commas
+        mixer = fields[0].strip()
+        value = fields[1].strip spaces and newline
+        dict[mixer] = value
+    return dict
+```
+```commandline
+# Function to find new mult value for effects
+```
+```commandline
+# Function that returns value of effect, as long as it is not present in our drug already
+def get_effect_value(values_dict, present_effects, new_effect)
+    if effect not in present_effects
+        return values_dict[effect]
+    else
+        return 0
+```
+```commandline
+# Function that does the cool thing i.e. finds the total mult value that can be added for a thingamajig
+def get_total_value(values_dict, mixer_dict, present_effects, og_effect, new_effect, mixer)
+    a = get_effect_value(values_dict, present_effects, new_effect)
+    b = get_effect_value(values_dict, present_effect, mixer_dict[mixer])
+    c = values_dict[mixer_dict[mixer]]
+    return a + b - c
+```
+```commandline
+# Function to print results nicely :)
+def print_results(
+```
 # Testing and debugging
 
 # Deployment
