@@ -1,0 +1,2 @@
+needed functionality:
+- if the effect being added is already one of the ones provided, then the actual value is going to be less than expected so factor that in too

@@ -32,27 +32,20 @@ def main():
     effect_values = create_dict('effect_values', 0, 1)
     #mix_values = create_dict('effect_list', 3, 4)
 
-    drug_present = input("Enter drug (weed | meth | coke): ")
+    drug_present = int(input("Enter drug (weed = 0 | meth = 1 | coke = 2 ): "))
     effects_present_input = input("current effects (insert commas between effects): ")
     effects_present = effects_present_input.split(',')
+    effects_present.sort()
 
+    print(effects_present)
     max = 0
     added_effects = []
     removed_effect = ''
 
-    # f = open('effect_list')
-    # for line in f:
-    #     fields = line.split(',')
-    #     for effect in effects_present:
-    #         if effect in fields[3]:
-    #             if effect_values[effect.strip()] > max:
-    #                 max = effect_values[effect.strip()]
-    #                 added_effects = [fields[0], fields[1]]
     f = open('effect_list')
     f.readline()
     for line in f:
         fields = line.split(',')
-
         for effect in effects_present:
             if effect == fields[3].strip():
                 mult = float(fields[4].strip('\n'))
@@ -61,12 +54,49 @@ def main():
                     added_effects = [fields[0].strip(), fields[1].strip()]
                     removed_effect = fields[3].strip()
 
+    original_mult = find_value_multiplier(effects_present, effect_values)
+    original_value = find_drug_value(drug_present, original_mult)
+
+    print(f"effects present = {effects_present}")
+    print(f"removed effect = {removed_effect}")
+    print(f"added effects = {added_effects}")
+    new_effects = new_total_effects(effects_present, removed_effect, added_effects)
+
+    new_mult = find_value_multiplier(new_effects, effect_values)
+    new_value = find_drug_value(drug_present, new_mult)
+
     print()
-    print(f"Maximum additional value multiplier found: {max}")
-    print(f"\033[31mRemoved effects:{removed_effect}\033[0m")
-    print(f"\033[32mAdded effects: {added_effects[0]}, {added_effects[1]}\033[0m")
+    print(f"\033[36mMaximum additional value multiplier found: {max}\033[0m")
     print(f"Original effects: {effects_present_input}")
-    print(f"Original effects multiplier: {find_value_multiplier(effects_present, effect_values)}")
+    print(f"Original effects multiplier, and value: {original_mult}, ${original_value}")
+    print(f"\033[31mRemoved effects: {removed_effect}\033[0m")
+    print(f"\033[32mAdded effects: {added_effects[0]}, {added_effects[1]}\033[0m")
+    print(f"New effects: {list_to_str(new_effects)}")
+    print(f"New effects multiplier, and value: {new_mult}, ${new_value}")
+
+def list_to_str(list):
+    str = ''
+    length = len(list)
+    for i in range(length):
+        if i == length - 1:
+            str = str + ", " + list[i]
+        elif i == 0:
+            str = list[0]
+        else:
+            str = str + ', ' + list[i]
+    return str
+
+def new_total_effects(original_effects, removed_effect, added_effects):
+    og = []
+    for element in original_effects:
+        og.append(element.strip())
+    og.remove(removed_effect.strip())
+    for element in added_effects:
+        if element.strip() not in og:
+            og.append(element)
+    og.sort()
+    return og
+
 
 def create_dict(file, key_index, value_index):
     '''
@@ -87,11 +117,11 @@ def find_value_multiplier(list, dict):
     '''
     This function takes a list and a dict, and returns the amount total for the items in the list which are found in the dict.
     '''
-    total = 0
+    total = 1
     for item in list:
-        if item in dict:
-            total = total + dict[item]
-    return total
+        if item.strip() in dict:
+            total = total + dict[item.strip()]
+    return round(total, 2)
 
 def find_drug_value(drug, multiplier):
     '''
