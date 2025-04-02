@@ -131,11 +131,11 @@ def get_effect_value(values_dict, present_effects, new_effect)
 ```
 ```commandline
 # Function that does the cool thing i.e. finds the total mult value that can be added for a thingamajig
-def get_total_value(values_dict, mixer_dict, present_effects, og_effect, new_effect, mixer)
-    a = get_effect_value(values_dict, present_effects, new_effect)
-    b = get_effect_value(values_dict, present_effect, mixer_dict[mixer])
-    c = values_dict[mixer_dict[mixer]]
-    return a + b - c
+def get_total_mult(values_dict, mixer_dict, mixing_dict, present_effects, og_effect, mixer)
+    result_effect_value = get_effect_value(values_dict, present_effects, new_effect)
+    passive_effect_value = get_effect_value(values_dict, present_effects, mixing_dict[mixer[og_effect])
+    original_effect_value = values_dict[mixer_dict[mixer]]
+    return result_effect + passive_effect_value + original_effect_value
 ```
 ```commandline
 # Function to print results nicely :)
