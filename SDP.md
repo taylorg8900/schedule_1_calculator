@@ -76,6 +76,22 @@ Here is the structure of the project
 7. Search another dictionary for singly adding effects, and compare against max
 8. Print results in a nice format
 
+I have everything working up to this point, except printing results out. How would I structure this manually?
+
+I need to know the total mult for all of the present effects, and the base value of the drug to find out how much it is initially worth.
+Then, I need to go find out which of the present effects got modified to give me the maximum mult value.
+I will delete that specific present effect, and add in the new effect and passive effect the mixer gave me.
+Finally, I will know all of the effects that are now in the drug, which will let me find the total mult.
+
+steps
+1. find mult and value of present version of drug
+2. record the effect that got modified 
+3. delete the effect that got modified from our list of effects
+4. add the effects which are to be added in to our list of effects
+5. find mult and value of new version of drug
+
+
+
 # Implementation
 ```commandline
 # Function to take the effect_values file and turn into a dictionary to be used to find value of each effect quickly
