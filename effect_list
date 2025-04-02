@@ -1,118 +1,119 @@
-electrifying + thought provoking, addy, long faced
-gingeritis + thought provoking, addy, sedating
-refreshing + thought provoking, addy, glowing
-energizing + thought provoking, addy, foggy
-euphoric + thought provoking, addy, explosive
-sneaky + gingeritis, banana, calming
-thought provoking + gingeritis, banana, energizing
-sneaky + gingeritis, banana, calming
-smelly + gingeritis, banana, toxic
-refreshing + gingeritis, banana, long faced
-thought provoking + gingeritis, banana, cyclopean
-focused + gingeritis, banana, disorienting
-seizure inducing + gingeritis, banana, focused
-jennerising + gingeritis, banana, paranoia
-anti gravity + gingeritis, banana, smelly
-euphoric + bright eyed, battery, electrifying
-tropic thunder + bright eyed, battery, munchies
-zombifying + bright eyed, battery, euphoric
-euphoric + bright eyed, battery, electrifying
-calorie dense + bright eyed, battery, laxative
-euphoric + bright eyed, battery, electrifying
-glowing + bright eyed, battery, cyclopean
-munchies + bright eyed, battery, shrinking
-euphoric + spicy, chili, athletic
-tropic thunder + spicy, chili, anti gravity
-bright eyed + spicy, chili, sneaky
-toxic + spicy, chili, munchies
-long faced + spicy, chili, laxative
-refreshing + spicy, chili, shrinking
-euphoric + energizing, cuke, toxic
-munchies + energizing, cuke, slippery
-paranoia + energizing, cuke, sneaky
-cyclopean + energizing, cuke, foggy
-thought provoking + energizing, cuke, gingeritis
-athletic + energizing, cuke, munchies
-laxative + energizing, cuke, euphoric
-explosive + calorie dense, donut, calorie dense
-calming + calorie dense, donut, munchies
-sneaky + calorie dense, donut, balding
-slippery + calorie dense, donut, anti gravity
-gingeritis + calorie dense, donut, jennerising
-euphoric + calorie dense, donut, focused
-energizing + calorie dense, donut, shrinking
-shrinking + athletic, energy drink, focused
-munchies + athletic, energy drink, sedating
-energizing + athletic, energy drink, euphoric
-euphoric + athletic, energy drink, spicy
-sneaky + athletic, energy drink, tropic thunder
-disorienting + athletic, energy drink, glowing
-laxative + athletic, energy drink, foggy
-disorienting + athletic, energy drink, glowing
-electrifying + athletic, energy drink, disorienting
-balding + athletic, energy drink, schizophrenia
-bright eyed + sedating, flu medicine, calming
-munchies + sedating, flu medicine, athletic
-gingeritis + sedating, flu medicine, thought provoking
-foggy + sedating, flu medicine, cyclopean
-slippery + sedating, flu medicine, munchies
-euphoric + sedating, flu medicine, laxative
-toxic + sedating, flu medicine, euphoric
-calming + sedating, flu medicine, focused
-refreshing + sedating, flu medicine, electrifying
-paranoia + sedating, flu medicine, shrinking
-smelly + toxic, gasoline, gingeritis
-sneaky + toxic, gasoline, jennerising
-tropic thunder + toxic, gasoline, sneaky
-sedating + toxic, gasoline, munchies
-spicy + toxic, gasoline, energizing
-energizing + toxic, gasoline, euphoric
-foggy + toxic, gasoline, laxative
-glowing + toxic, gasoline, disorienting
-calming + toxic, gasoline, paranoia
-disorienting + toxic, gasoline, electrifying
-focused + toxic, gasoline, shrinking
-calming + long faced, horse semen, anti gravity
-refreshing + long faced, horse semen, gingeritis
-electrifying + long faced, horse semen, thought provoking
-balding + jennerising, iodine, calming
-sneaky + jennerising, iodine, toxic
-paranoia + jennerising, iodine, foggy
-gingeritis + jennerising, iodine, calorie dense
-seizure inducing + jennerising, iodine, euphoric
-thought provoking + jennerising, iodine, refreshing
-cyclopean + foggy, mega bean, energizing
-glowing + foggy, mega bean, calming
-calming + foggy, mega bean, sneaky
-paranoia + foggy, mega bean, jennerising
-laxative + foggy, mega bean, athletic
-toxic + foggy, mega bean, slippery
-energizing + foggy, mega bean, thought provoking
-focused + foggy, mega bean, seizure inducing
-disorienting + foggy, mega bean, focused
-cyclopean + foggy, mega bean, thought provoking
-electrifying + foggy, mega bean, shrinking
-munchies + slippery, motor oil, energizing
-toxic + slippery, motor oil, foggy
-sedating + slippery, motor oil, euphoric
-anti gravity + slippery, motor oil, paranoia
-schizophrenia + slippery, motor oil, munchies
-sneaky + balding, mouthwash, calorie dense
-anti gravity + balding, mouthwash, calming
-sedating + balding, mouthwash, explosive
-jennerising + balding, mouthwash, focused
-paranoia  + sneaky, paracetamol, energizing
-slippery  + sneaky, paracetamol, calming
-tropic thunder  + sneaky, paracetamol, toxic
-bright eyed  + sneaky, paracetamol, spicy
-toxic  + sneaky, paracetamol, glowing
-calming  + sneaky, paracetamol, foggy
-anti gravity  + sneaky, paracetamol, munchies
-balding  + sneaky, paracetamol, paranoia
-athletic  + sneaky, paracetamol, electrifying
-balding  + sneaky, paracetamol, paranoia
-gingeritis  + sneaky, paracetamol, focused
-sneaky + tropic thunder, viagra, athletic
-bright eyed + tropic thunder, viagra, euphoric
-calming + tropic thunder, viagra, laxative
-toxic + tropic thunder, viagra, disorienting
+"target / 'changed into' effect", "mixer's added effect", mixer, original effect, added value
+refreshing, thought provoking, addy, glowing, .10
+energizing, thought provoking, addy, foggy, .30
+gingeritis, thought provoking, addy, sedating, .38
+electrifying, thought provoking, addy, long faced, .42
+euphoric, thought provoking, addy, explosive, .62
+refreshing, gingeritis, banana, long faced, -0.18
+seizure inducing, gingeritis, banana, focused, .04
+thought provoking, gingeritis, banana, cyclopean, .08
+smelly, gingeritis, banana, toxic, .20
+sneaky, gingeritis, banana, calming, .34
+sneaky, gingeritis, banana, calming, .34
+focused, gingeritis, banana, disorienting, .36
+thought provoking, gingeritis, banana, energizing, .42
+jennerising, gingeritis, banana, paranoia, .62
+anti gravity, gingeritis, banana, smelly, .74
+munchies, bright eyed, battery, shrinking, -0.08
+euphoric, bright eyed, battery, electrifying, .08
+euphoric, bright eyed, battery, electrifying, .08
+euphoric, bright eyed, battery, electrifying, .08
+glowing, bright eyed, battery, cyclopean, .32
+calorie dense, bright eyed, battery, laxative, .68
+tropic thunder, bright eyed, battery, munchies, .74
+zombifying, bright eyed, battery, euphoric, .80
+refreshing, spicy, chili, shrinking, -0.08
+euphoric, spicy, chili, athletic, .24
+toxic, spicy, chili, munchies, .26
+tropic thunder, spicy, chili, anti gravity, .30
+bright eyed, spicy, chili, sneaky, .54
+long faced, spicy, chili, laxative, .90
+paranoia, energizing, cuke, sneaky, -0.02
+munchies, energizing, cuke, slippery, .00
+laxative, energizing, cuke, euphoric, .04
+euphoric, energizing, cuke, toxic, .40
+cyclopean, energizing, cuke, foggy, .42
+athletic, energizing, cuke, munchies, .42
+thought provoking, energizing, cuke, gingeritis, .46
+energizing, calorie dense, donut, shrinking, -0.10
+explosive, calorie dense, donut, calorie dense, .00
+gingeritis, calorie dense, donut, jennerising, .06
+slippery, calorie dense, donut, anti gravity, .08
+sneaky, calorie dense, donut, balding, .22
+calming, calorie dense, donut, munchies, .26
+euphoric, calorie dense, donut, focused, .30
+laxative, athletic, energy drink, foggy, -0.04
+disorienting, athletic, energy drink, glowing, -0.16
+disorienting, athletic, energy drink, glowing, -0.16
+sneaky, athletic, energy drink, tropic thunder, .10
+euphoric, athletic, energy drink, spicy, .12
+munchies, athletic, energy drink, sedating, .18
+energizing, athletic, energy drink, euphoric, .36
+balding, athletic, energy drink, schizophrenia, .62
+shrinking, athletic, energy drink, focused, .76
+electrifying, athletic, energy drink, disorienting, .82
+refreshing, sedating, flu medicine, electrifying, -0.01
+paranoia, sedating, flu medicine, shrinking, -0.34
+gingeritis, sedating, flu medicine, thought provoking, .02
+munchies, sedating, flu medicine, athletic, .06
+foggy, sedating, flu medicine, cyclopean, .06
+toxic, sedating, flu medicine, euphoric, .08
+calming, sedating, flu medicine, focused, .20
+euphoric, sedating, flu medicine, laxative, .44
+slippery, sedating, flu medicine, munchies, .48
+bright eyed, sedating, flu medicine, calming, .56
+sneaky, toxic, gasoline, jennerising, -0.18
+smelly, toxic, gasoline, gingeritis, -0.20
+focused, toxic, gasoline, shrinking, -0.44
+disorienting, toxic, gasoline, electrifying, -0.50
+energizing, toxic, gasoline, euphoric, .04
+calming, toxic, gasoline, paranoia, .10
+sedating, toxic, gasoline, munchies, .14
+spicy, toxic, gasoline, energizing, .16
+tropic thunder, toxic, gasoline, sneaky, .22
+foggy, toxic, gasoline, laxative, .36
+glowing, toxic, gasoline, disorienting, .48
+calming, long faced, horse semen, anti gravity, .08
+refreshing, long faced, horse semen, gingeritis, .46
+electrifying, long faced, horse semen, thought provoking, .58
+paranoia, jennerising, iodine, foggy, .06
+seizure inducing, jennerising, iodine, euphoric, .24
+gingeritis, jennerising, iodine, calorie dense, .34
+balding, jennerising, iodine, calming, .62
+sneaky, jennerising, iodine, toxic, .66
+thought provoking, jennerising, iodine, refreshing, .72
+paranoia, foggy, mega bean, jennerising, -0.06
+disorienting, foggy, mega bean, focused, .2
+toxic, foggy, mega bean, slippery, .02
+laxative, foggy, mega bean, athletic, .04
+energizing, foggy, mega bean, thought provoking, .14
+calming, foggy, mega bean, sneaky, .22
+electrifying, foggy, mega bean, shrinking, .26
+cyclopean, foggy, mega bean, thought provoking, .48
+focused, foggy, mega bean, seizure inducing, .52
+cyclopean, foggy, mega bean, energizing, .70
+glowing, foggy, mega bean, calming, .74
+toxic, slippery, motor oil, foggy, -0.02
+schizophrenia, slippery, motor oil, munchies, .22
+munchies, slippery, motor oil, energizing, .24
+sedating, slippery, motor oil, euphoric, .42
+anti gravity, slippery, motor oil, paranoia, .88
+sneaky, balding, mouthwash, calorie dense, .26
+sedating, balding, mouthwash, explosive, .56
+jennerising, balding, mouthwash, focused, .56
+anti gravity, balding, mouthwash, calming, .74
+calming, sneaky, paracetamol, foggy, -0.02
+toxic, sneaky, paracetamol, glowing, -0.24
+paranoia, sneaky, paracetamol, energizing, .02
+athletic, sneaky, paracetamol, electrifying, .06
+bright eyed, sneaky, paracetamol, spicy, .26
+gingeritis, sneaky, paracetamol, focused, .28
+slippery, sneaky, paracetamol, calming, .48
+balding, sneaky, paracetamol, paranoia, .54
+balding, sneaky, paracetamol, paranoia, .54
+anti gravity, sneaky, paracetamol, munchies, .66
+tropic thunder, sneaky, paracetamol, toxic, .70
+sneaky, tropic thunder, viagra, athletic, .38
+toxic, tropic thunder, viagra, disorienting, .46
+calming, tropic thunder, viagra, laxative, .56
+bright eyed, tropic thunder, viagra, euphoric, .68

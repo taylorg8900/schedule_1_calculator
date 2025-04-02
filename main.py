@@ -14,21 +14,16 @@ else:
     f = open('effect_list')
     for line in f:
         if sys.argv[1] in line:
-            first = line.split(" + ")
-            second = first[1].strip("\n").split(',')
-            third = [] + [first[0].strip()] + [second[0]] + [second[2].strip()]
-            list = third
-            # print(f"first: {first}")
-            # print(f"second: {second}")
-            # print(f"third: {third}")
-            # list = things.split(",")
-            if (list[0] not in values) or (list[1] not in values) or (list[2] not in values):
+            fields = line.strip('\n').split(',')
+            first = fields[0].strip()
+            second = fields[1].strip()
+            fourth = fields[3].strip()
+            if (first not in values) or (second not in values) or (fourth not in values):
                 print(f"This line is spelled incorrectly!! : {line}")
-                # print(f"list actual: .{list[0]}. .{list[1]}. .{list[2]}.")
+                print(f"list actual: .{first}. .{second}. .{fourth}.")
             else:
-                value = round((values[list[0]] + values[list[1]] - values[list[2]]), 2)
+                value = round((values[first] + values[second] - values[fourth]), 2)
                 print(f"{line.strip('\n')}: \033[96madded value = {value}\033[0m")
     f.close()
-# for value in biglist:
-#     print(f"| {value}         |")
+
 
