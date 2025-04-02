@@ -17,14 +17,24 @@ def main():
 
     # UNCOMMENT WHEN TESTING IS DONE
     # get input from user, and create our present effects list
-    drug = int(input("Which drug are you using? ( 0 = Weed | 1 = Meth | 2 = Cocaine): "))
-    effects_input = input("Which effects are present? (Separate names with commas!): ").split(',')
-    present_effects = []
-    for e in effects_input:
-        present_effects.append(e.strip())
+    # drug = int(input("Which drug are you using? ( 0 = Weed | 1 = Meth | 2 = Cocaine): "))
+    # effects_input = input("Which effects are present? (Separate names with commas!): ").split(',')
+    # present_effects = []
+    # for e in effects_input:
+    #     present_effects.append(e.strip())
 
+    present_effects = ['calming', 'toxic', 'foggy', 'balding']
 
+    # find maximum mult value able to be added
+    max = 0
+    for effect in present_effects:
+        for mixer in mixing_dict:
+            if effect in mixing_dict[mixer]:
+                mult = get_total_mult(values_dict, mixer_dict, mixing_dict, present_effects, effect, str(mixer))
+                if mult > max:
+                    max = round(mult, 2)
 
+    print(max)
 
 def create_values_dict(filename):
     '''
