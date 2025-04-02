@@ -2,7 +2,7 @@
 import sys
 
 values = {}
-d = open('effect_values')
+d = open('csv-files/effect_values')
 for line in d:
     fields = line.split(',')
     values[fields[0]] = float(fields[1])

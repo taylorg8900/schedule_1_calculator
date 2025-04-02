@@ -29,7 +29,7 @@ import sys
 def main():
 
     # create dictionary for effects and their value multipliers
-    effect_values = create_dict('effect_values', 0, 1)
+    effect_values = create_dict('csv-files/effect_values', 0, 1)
     #mix_values = create_dict('effect_list', 3, 4)
 
     drug_present = int(input("Enter drug (weed = 0 | meth = 1 | coke = 2 ): "))
