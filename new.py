@@ -1,19 +1,27 @@
 
+
+
 def main():
     # create all of our dictionaries
     values_dict = create_values_dict('csv-files/effect_values')
     mixing_dict = create_mixing_dict('csv-files/mixing.csv')
     mixer_dict = create_mixer_dict('csv-files/mixer.csv')
 
+    # print(round(values_dict['anti gravity'] + values_dict['athletic'], 2))
+    # print(mixing_dict[
+    #     'addy'
+    #       ])
 
+    # present_effects = ['anti gravity', 'spicy']
+    # print(get_total_mult(values_dict, mixer_dict, mixing_dict, present_effects, 'anti gravity', 'chili'))
 
-    # # UNCOMMENT WHEN TESTING IS DONE
-    # # get input from user, and create our present effects list
-    # drug = int(input("Which drug are you using? ( 0 = Weed | 1 = Meth | 2 = Cocaine): "))
-    # effects_input = input("Which effects are present? (Separate names with commas!): ").split(',')
-    # present_effects = []
-    # for e in effects_input:
-    #     present_effects.append(e.strip())
+    # UNCOMMENT WHEN TESTING IS DONE
+    # get input from user, and create our present effects list
+    drug = int(input("Which drug are you using? ( 0 = Weed | 1 = Meth | 2 = Cocaine): "))
+    effects_input = input("Which effects are present? (Separate names with commas!): ").split(',')
+    present_effects = []
+    for e in effects_input:
+        present_effects.append(e.strip())
 
 
 
@@ -28,7 +36,7 @@ def create_values_dict(filename):
     for line in f:
         fields = line.split(',')
         key = fields[0].strip()
-        value = float(fields[1].strip().strip('\n'))
+        value = round(float(fields[1].strip().strip('\n')), 2)
         d[key] = value
     f.close()
     return d
@@ -103,13 +111,13 @@ def get_total_mult(values_dict, mixer_dict, mixing_dict, present_effects, origin
     new_effect_mult = get_effect_mult(
         values_dict,
         present_effects,
-        mixing_dict[mixer[original_effect]]
+        mixing_dict[mixer][original_effect]
     )
 
     passive_effect_mult = get_effect_mult(
         values_dict,
         present_effects,
-        mixing_dict[mixer[original_effect]]
+        mixer_dict[mixer]
     )
 
     original_effect_mult = values_dict[original_effect]
