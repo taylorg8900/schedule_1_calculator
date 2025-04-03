@@ -90,6 +90,12 @@ steps
 4. add the effects which are to be added in to our list of effects
 5. find mult and value of new version of drug
 
+Right before going to sleep, I realized something. One, this program does not consider all of the effects that a mixer will
+have on the drug. There could be many effects that are modified. So, we need another approach: We should probably iterate 
+through each mixer in the game and evaluate the drug and how it will get changed by it, then find the value. Then just 
+keep the max after going through each mixer. This solves the current issue of keeping the mixing of things separate from
+single effects, and is going to be more accurate since we are considering many different effects at once.
+
 
 
 # Implementation

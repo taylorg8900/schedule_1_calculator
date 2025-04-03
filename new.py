@@ -17,13 +17,13 @@ def main():
     for e in effects_input:
         present_effects.append(e.strip())
     present_effects.sort()
-    #present_effects = ['calming', 'toxic', 'foggy', 'balding']
 
     # find maximum mult value able to be added using mixing_dict
     max = 0
     removed_effect = ''
     new_effect = ''
     passive_effect = ''
+    m = ''
     for effect in present_effects:
         for mixer in mixing_dict:
             if effect in mixing_dict[mixer]:
@@ -33,15 +33,15 @@ def main():
                     removed_effect = effect
                     new_effect = mixing_dict[mixer][effect]
                     passive_effect = mixer_dict[mixer]
+                    m = mixer
 
-    # find maximum mult value able to be added using mixer_dict
+    # single_max = max
+    # single_new_effect = ''
     # for effect in values_dict:
-    #     mult = values_dict[effect]
-    #     if mult > max:
-    #         max = round(mult, 2)
-    #         removed_effect = ''
-    #         new_effect = ''
-    #         passive_effect = effect
+    #     if values_dict[effect] > single_max:
+    #         single_max = values_dict[effect]
+    #         single_new_effect = effect
+
 
     # Get information required for printing
     initial_mult = 1
@@ -76,12 +76,13 @@ def main():
     new_mult = round(new_mult, 2)
     new_value = round(new_value, 2)
 
+
     # print information
     print("Best value found!")
     print(f"Initial effects: {present_effects}")
     print(f"Initial effects mult: {initial_mult}\nInitial value: {initial_value}")
     print(f"\033[31mRemoved {removed_effect}\033[0m")
-    print(f"\033[32mAdded {new_effect}, {passive_effect}\033[0m")
+    print(f"\033[32mAdded {new_effect}, {passive_effect} with {m} for an extra {round(new_mult - initial_mult, 2)} multiplier\033[0m")
     print(f"New effects: {new_effects}")
     print(f"New effects mult: {new_mult}\nNew value: {new_value}")
 
