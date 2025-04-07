@@ -9,6 +9,7 @@ class Drug:
         self._added_mixer = ''
         self._added_effect = ''
         self._added_mult = 0
+        self._modified_effects = {}
 
         self._value_dict = {}
         self._mixer_dict = {}
@@ -21,6 +22,34 @@ class Drug:
 
         self.__calc_mult()
         self.__calc_value()
+
+    def add_mixer(self, mixer):
+        self._added_mixer = mixer.lower()
+        self._added_effect = self._mixer_dict[self._added_mixer]
+        self._added_mult = self._value_dict[self._mixer_dict[self._added_mixer]]
+
+        self.__create_modified_effects_dict(mixer)
+        self.__modify_effects(mixer)
+
+    def __create_modified_effects_dict(self, mixer):
+        dict = {}
+        for effect in self._effects:
+            if effect in self._modify_dict[mixer]:
+                dict[effect] = self._modify_dict[mixer][effect]
+        self._modified_effects = dict
+
+    def __modify_effects(self, mixer):
+        new_effects = {}
+        for effect in self._effects:
+            if effect in self._modify_dict[mixer]:
+                new_effects[effect] = self._value_dict[self._modify_dict[mixer][effect]]
+            else:
+                new_effects[effect] = self._effects[effect]
+
+        # We include this because if that effect already exists, we don't want to add it a second time.
+        new_effects[self._added_mixer] = self._value_dict[self._mixer_dict[self._added_mixer]]
+        self._effects = new_effects
+
 
     def __create_dicts(self):
         self._value_dict = create_values_dict('csv-files/values.csv', 0, 1)
@@ -46,3 +75,9 @@ class Drug:
 
     def get_mult(self):
         return self._mult
+
+    def get_value(self):
+        return self._value
+
+    def get_effects(self):
+        return self._effects
