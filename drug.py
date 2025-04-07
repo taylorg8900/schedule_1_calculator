@@ -88,4 +88,7 @@ class Drug:
         return self._value
 
     def get_effects(self):
-        return self._effects
+        effects = []
+        for effect in self._effects:
+            effects.append(effect)
+        return effects

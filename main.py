@@ -4,8 +4,16 @@ from dicts import create_mixer_dict
 def main():
     drug = Drug('weed', ['athletic', 'calming', 'focused', 'shrinking'])
     drug.add_mixer('mega bean')
+    print(drug.get_effects())
+    strains = find_best_strains(drug, 4)
     print(drug.get_mult())
     print(drug.get_effects())
+
+    for strain in strains:
+        print()
+        print(strain.get_mult())
+        print(strain.get_effects())
+
 
 def find_best_strains(drug_object, amount):
     mixer_dict = create_mixer_dict('csv-files/mixer.csv', 0, 1)
