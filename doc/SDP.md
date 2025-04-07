@@ -128,6 +128,17 @@ Thoughts while creating UML
 - I want get_representation to be a list of strings instead of one string, so that I can print multiple strains horizontally relative to each other, rather than vertically
 - The difference between the first drug and strain 1 in the example up there, is that we are not printing out the attributes we don't need or have default values
 
+Thoughts for the representation functions
+- I want everything to be lined up prettily, so I might just find out the maximum possible size manually and left/right justify things based on that
+- I actually don't really like that, I would prefer everything to be dynamic but I don't know how to do that
+- How would I find out where the `|` lines go / how many spaces go in between them on lines where there is no text?
+  - Find out which line in the representation is the longest, then count how many chars are in it
+  - I could have a list of strings with a specific format, just like in the diagram above
+  - Then find out which string in the list is the longest, and count it's chars
+  - I should split that up into 4 functions, because there are 4 different sections in the representation with their own specific formatting
+    - For each section, I should find out the longest string and then format it accordingly
+  - The correct amount of spaces between the `|` lines is just whichever function returns the largest value
+
 
 Pseudocode for methods
 ```commandline
@@ -195,7 +206,8 @@ calc_value()
 create_dicts()
     import dict functions from dicts.py and let it rip brother
     
-
+get_mini_representation()
+    
 
 ```
 
