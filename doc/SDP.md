@@ -100,33 +100,34 @@ Drug
 type:             str
 mult:             float
 value:            int
-modified effects: dict[str : str]
-added mixer:      str
-added effect:     str
-added mult:       float
+modified_effects: dict[str : str]
+added_mixer:      str
+added_effect:     str
+added_mult:       float
 effects:          dict[str : float]
 
 value_dict:       dict[str : float]
 mixer_dict:       dict[str : str]
 modify_dict:      dict[dict[str : str]]
 ---------------------
-__init__(list): dict[str : float]
-get_mult(): float
-get_value(): int
-modify_effects(str): 
-get_modified_effects(str): list
+__init__(type, list): dict[str : float]
+-calc_mult():          
+-calc_value():    
+-create_dicts()     
++add_mixer(str)
+-modify_effects(str)
+-create_modified_effects_dict(str)
+
++get_type():           str
++get_effects():        list(str)
++get_representation(): list(str)
 ```
-\_\_init__(list)
-- our constructor, creates the 'effects' attribute
+Thoughts while creating UML
+- For calculating the best new strain, would it make sense to create a new drug object and find its mult / value with its methods?
+- I want get_representation to be a list of strings instead of one string, so that I can print multiple strains horizontally relative to each other, rather than vertically
 
-get_mult()
-- returns the total mult for the object, uses the value_dict to do this
 
-get_value()
-- takes the 'type' attribute and the 'mult' attribute to figure out the drugs value
 
-modify_effects(str):
-- modifies the object's 'effects' attribute
 
 
 # Implementation
