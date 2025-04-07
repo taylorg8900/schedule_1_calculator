@@ -118,9 +118,10 @@ __init__(type, list): dict[str : float]
 -modify_effects(str)
 -create_modified_effects_dict(str)
 
-+get_type():           str
-+get_effects():        list(str)
-+get_representation(): list(str)
++get_type():                str
++get_effects():             list(str)
++get_mini_representation(): list(str)
++get_representation():      list(str)
 ```
 Thoughts while creating UML
 - For calculating the best new strain, would it make sense to create a new drug object and find its mult / value with its methods?
@@ -147,7 +148,7 @@ __init__(str: type, list: list(str)):
     call calc_mult
     call calc_value
 
-add_mixer
+add_mixer(str mixer)
     first get the following
         self.added_mixer
         self.added_effect
