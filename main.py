@@ -4,15 +4,21 @@ from dicts import create_mixer_dict
 def main():
     drug = Drug('weed', ['athletic', 'calming', 'focused', 'shrinking'])
     drug.add_mixer('mega bean')
-    print(drug.get_effects())
-    strains = find_best_strains(drug, 4)
+    strains = find_best_strains(drug, 16)
     print(drug.get_mult())
     print(drug.get_effects())
+
+
+
 
     for strain in strains:
         print()
         print(strain.get_mult())
-        print(strain.get_effects())
+        print(strain.get_added_mixer())
+        effects = strain.get_effects()
+        effects.sort()
+        print(effects)
+
 
 
 def find_best_strains(drug_object, amount):
@@ -22,7 +28,7 @@ def find_best_strains(drug_object, amount):
 
     # Create a new strain from every possible mixer in the game
     for mixer in mixer_dict:
-        new_drug = Drug(drug_object.get_type, drug_object.get_effects)
+        new_drug = Drug(drug_object.get_type(), drug_object.get_effects())
         new_drug.add_mixer(mixer)
         strains.append(new_drug)
 
@@ -32,6 +38,7 @@ def find_best_strains(drug_object, amount):
         best = strains[0]
         for strain in strains:
             if strain.get_mult() > max:
+                max = strain.get_mult()
                 best = strain
         strains.remove(best)
         best_strains.append(best)

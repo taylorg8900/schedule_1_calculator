@@ -88,7 +88,7 @@ class Drug:
         return self._value
 
     def get_effects(self):
-        effects = []
-        for effect in self._effects:
-            effects.append(effect)
-        return effects
+        return list(self._effects.keys())
+
+    def get_added_mixer(self):
+        return self._added_mixer
