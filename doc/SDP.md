@@ -236,6 +236,31 @@ find_best_strains(drug_object, amount_to_return):
     3) return a list of the best 'x' amount of strains
 ```
 
+In order to figure out how to structure the representations, I need to try and dissect my example output from earlier to see if I can notice the structure I want.
+```commandline
+-----------------------------   -----------------------------
+| Drug type:    weed        |   | Drug type:    weed        |
+| Drug mult:    2.34        |   | Drug mult:    2.34        |
+| Drug value: $ 81.9        |   | Drug value: $ 81.9        |
+|                           |   |                           |
+| Added Mixer:  mega bean   |   | Added Mixer:  mega bean   |
+| Added effect: foggy       |   | Added effect: foggy       |
+| Added mult:   0.16        |   | Added mult:   0.16        |
+|                           |   |                           |
+| Modified effects          |   | Modified effects          |
+| athletic  -> laxative     |   | athletic  -> laxative     |
+| calming   -> glowing      |   | calming   -> glowing      |
+| focused   -> disorienting |   | focused   -> disorienting |
+| shrinking -> electrifying |   | shrinking -> electrifying |
+|                           |   |                           |
+| Effects       Mult        |   | Effects       Mult        |
+| disorienting  .00         |   | disorienting  .00         |
+| electrifying  .50         |   | electrifying  .50         |
+| foggy         .36         |   | foggy         .36         |
+| glowing       .48         |   | glowing       .48         |
+| laxative      .00         |   | laxative      .00         |
+-----------------------------   -----------------------------
+```
 
 
 # Implementation
