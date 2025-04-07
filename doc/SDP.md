@@ -90,7 +90,44 @@ Enter strain number to repeat (0 to quit):
 
 How do I store all of this information?
 
-I guess it makes sense to use some kind of object, since there is kind of a lot going on here.
+We need to use an object, since we need some kind of container to hold all of this information 
+and will have multiple containers stored in memory.
+
+Class diagram / UML
+```commandline
+Drug
+--------------------
+type:             str
+mult:             float
+value:            int
+modified effects: dict[str : str]
+added mixer:      str
+added effect:     str
+added mult:       float
+effects:          dict[str : float]
+
+value_dict:       dict[str : float]
+mixer_dict:       dict[str : str]
+modify_dict:      dict[dict[str : str]]
+---------------------
+__init__(list): dict[str : float]
+get_mult(): float
+get_value(): int
+modify_effects(str): 
+get_modified_effects(str): list
+```
+\_\_init__(list)
+- our constructor, creates the 'effects' attribute
+
+get_mult()
+- returns the total mult for the object, uses the value_dict to do this
+
+get_value()
+- takes the 'type' attribute and the 'mult' attribute to figure out the drugs value
+
+modify_effects(str):
+- modifies the object's 'effects' attribute
+
 
 # Implementation
 
