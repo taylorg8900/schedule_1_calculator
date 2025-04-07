@@ -97,18 +97,18 @@ Class diagram / UML
 ```commandline
 Drug
 --------------------
-type:             str
-mult:             float
-value:            int
-modified_effects: dict[str : str]
-added_mixer:      str
-added_effect:     str
-added_mult:       float
-effects:          dict[str : float]
+-type:             str
+-mult:             float
+-value:            int
+-modified_effects: dict[str : str]
+-added_mixer:      str
+-added_effect:     str
+-added_mult:       float
+-effects:          dict[str : float]
 
-value_dict:       dict[str : float]
-mixer_dict:       dict[str : str]
-modify_dict:      dict[dict[str : str]]
+-value_dict:       dict[str : float]
+-mixer_dict:       dict[str : str]
+-modify_dict:      dict[dict[str : str]]
 ---------------------
 __init__(type, list): dict[str : float]
 -calc_mult():          
@@ -125,7 +125,78 @@ __init__(type, list): dict[str : float]
 Thoughts while creating UML
 - For calculating the best new strain, would it make sense to create a new drug object and find its mult / value with its methods?
 - I want get_representation to be a list of strings instead of one string, so that I can print multiple strains horizontally relative to each other, rather than vertically
+- The difference between the first drug and strain 1 in the example up there, is that we are not printing out the attributes we don't need or have default values
 
+
+Pseudocode for methods
+```commandline
+__init__(str: type, list: list(str)):
+    set up self. variables' default values
+        self.type = type
+        self.mult = 0
+        self.value = 0
+        self.effects = {}
+        self.added_mixer = ''
+        self.added_effect = ''
+        self.added_mult = 0
+        
+    call create_dicts to create every dictionary
+    self.effects = {}
+    for effect in list
+        self.effects[effect] = self.value_dict[effect]
+    call calc_mult
+    call calc_value
+
+add_mixer
+    first get the following
+        self.added_mixer
+        self.added_effect
+        self.added_mult
+        call create_modified_effects_dict
+    call modify_effects(str)
+    
+create_modified_effects_dict(str mixer)
+    dict = {}
+    for effect in self.effects
+        if effect can be modified / exists in self.modify_dict[mixer][effect]
+            dict[effect] = self.modify_dict[mixer][effect]
+        otherwise, do nothing
+    self.modified dicts = dict
+
+modify_effects(str mixer)
+    remember to add self.added mixer to the dict
+    new_effects = {}
+    for effect in self.effects
+        idea: if effect can be modified as per what is in self.modify_dict, then add the modified version of effect to new_effects
+        if effect can't be modified / is not in self.modify_dict[mixer], then just add what is already in self.effects to new_effects
+        
+        if effect exists in self.modify_dict[mixer]
+            new_effects[effect] = self.modify_dict[mixer][effect]
+        else
+            new_effects[effect] = self.effects[effect]
+    add self.added mixer to the dict 
+    self.effects = new_effects
+
+calc_mult():
+    total = 1
+    for each key in self.effects
+        total += self.effects[key]
+    self.mult = total
+
+calc_value()
+    drug_name = self.type.lower().strip()
+    if drug_name.startswith('we')
+        self.value = self.mult * 35
+    repeat for other drugs
+    else
+        self.value = 0
+
+create_dicts()
+    import dict functions from dicts.py and let it rip brother
+    
+
+
+```
 
 
 
