@@ -238,28 +238,51 @@ find_best_strains(drug_object, amount_to_return):
 
 In order to figure out how to structure the representations, I need to try and dissect my example output from earlier to see if I can notice the structure I want.
 ```commandline
------------------------------   -----------------------------
-| Drug type:    weed        |   | Drug type:    weed        |
-| Drug mult:    2.34        |   | Drug mult:    2.34        |
-| Drug value: $ 81.9        |   | Drug value: $ 81.9        |
-|                           |   |                           |
-| Added Mixer:  mega bean   |   | Added Mixer:  mega bean   |
-| Added effect: foggy       |   | Added effect: foggy       |
-| Added mult:   0.16        |   | Added mult:   0.16        |
+-----------------------------   -----------------------------     <- max number of chars * '-'
+| Drug type:    weed        |   '| Drug type:   ' {weed}        |
+| Drug mult:    2.34        |   '| Drug mult:   ' {2.34}        | <- left justify those variables by max number of chars - 15
+| Drug value: $ 81.9        |   '| Drug value: $' {81.9}        |
+|                           |   |                           |     <- multiply ' ' by max chars - 2
+| Added Mixer:  mega bean   |   '| Added Mixer: ' {mega bean}   |
+| Added effect: foggy       |   '| Added effect:' {foggy}       |  <- left justify those variables by max number of chars - 16
+| Added mult:   0.16        |   '| Added mult:  ' {0.16}        |
 |                           |   |                           |
 | Modified effects          |   | Modified effects          |
 | athletic  -> laxative     |   | athletic  -> laxative     |
-| calming   -> glowing      |   | calming   -> glowing      |
-| focused   -> disorienting |   | focused   -> disorienting |
-| shrinking -> electrifying |   | shrinking -> electrifying |
+| calming   -> glowing      |   | calming   -> glowing      | <- left justify first words by amount of characters longest one has
+| focused   -> disorienting |   | focused   -> disorienting | <- then print the '<-'
+| shrinking -> electrifying |   | shrinking -> electrifying | <- then left justify the second words by (first amount chars + middle amount chars + third amount chars) - max number chars
 |                           |   |                           |
 | Effects       Mult        |   | Effects       Mult        |
 | disorienting  .00         |   | disorienting  .00         |
-| electrifying  .50         |   | electrifying  .50         |
-| foggy         .36         |   | foggy         .36         |
+| electrifying  .50         |   | electrifying  .50         | <- left justify 'Effects' plus each effect by amount of characters longest one has
+| foggy         .36         |   | foggy         .36         | <- 
 | glowing       .48         |   | glowing       .48         |
 | laxative      .00         |   | laxative      .00         |
 -----------------------------   -----------------------------
+
+-----------------------------
+| Drug type:    weed        |
+| Drug mult:    2.34        |
+| Drug value: $ 81.9        |
+|                           |
+| Added Mixer:  mega bean   |
+| Added effect: foggy       |
+| Added mult:   0.16        |
+|                           |
+| Modified effects          |
+| athletic  -> laxative     |
+| calming   -> glowing      |
+| focused   -> disorienting |
+| shrinking -> electrifying |
+|                           |
+| Effects       Mult        |
+| disorienting  .00         |
+| electrifying  .50         |
+| foggy         .36         |
+| glowing       .48         |
+| laxative      .00         |
+-----------------------------
 ```
 
 
