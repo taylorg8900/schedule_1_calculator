@@ -31,6 +31,10 @@ class Drug:
         self.__create_modified_effects_dict(mixer)
         self.__modify_effects(mixer)
 
+        self.__calc_mult()
+        self.__calc_value()
+
+
     def __create_modified_effects_dict(self, mixer):
         dict = {}
         for effect in self._effects:
@@ -42,12 +46,12 @@ class Drug:
         new_effects = {}
         for effect in self._effects:
             if effect in self._modify_dict[mixer]:
-                new_effects[effect] = self._value_dict[self._modify_dict[mixer][effect]]
+                new_effects[self._modify_dict[mixer][effect]] = self._value_dict[self._modify_dict[mixer][effect]]
             else:
                 new_effects[effect] = self._effects[effect]
 
         # We include this because if that effect already exists, we don't want to add it a second time.
-        new_effects[self._added_mixer] = self._value_dict[self._mixer_dict[self._added_mixer]]
+        new_effects[self._added_effect] = self._value_dict[self._mixer_dict[self._added_mixer]]
         self._effects = new_effects
 
 
@@ -60,7 +64,7 @@ class Drug:
         total = 1
         for effect in self._effects:
             total += self._effects[effect]
-        self._mult = total
+        self._mult = round(total, 2)
 
     def __calc_value(self):
         drug_name = self._type.lower().strip()
@@ -72,6 +76,7 @@ class Drug:
             self._value = self._mult * 150
         else:
             self._value = 0
+        self._value = round(self._value, 2)
 
     def get_mult(self):
         return self._mult
