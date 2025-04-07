@@ -2,22 +2,17 @@ from drug import Drug
 from dicts import create_mixer_dict
 
 def main():
-    drug = Drug('weed', ['athletic', 'calming', 'focused', 'shrinking'])
-    drug.add_mixer('mega bean')
+    drug = Drug('weed', ['athletic', 'calming'])
+    # drug.add_mixer('mega bean')
     strains = find_best_strains(drug, 16)
     print(drug.get_mult())
     print(drug.get_effects())
-
-
-
 
     for strain in strains:
         print()
         print(strain.get_mult())
         print(strain.get_added_mixer())
-        effects = strain.get_effects()
-        effects.sort()
-        print(effects)
+        print(strain.get_effects())
 
 
 

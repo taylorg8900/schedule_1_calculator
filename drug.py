@@ -88,7 +88,9 @@ class Drug:
         return self._value
 
     def get_effects(self):
-        return list(self._effects.keys())
+        l = list(self._effects.keys())
+        l.sort()
+        return l
 
     def get_added_mixer(self):
         return self._added_mixer

@@ -211,6 +211,30 @@ get_mini_representation()
 
 ```
 
+Pseudocode for main.py
+```commandline
+find_best_strains(drug_object, amount_to_return):
+    strains = []
+    create a mixer dict using the mixer_dict function from dicts.py
+    for mixer in mixer_dict
+        new_drug = Drug(dru_object.get_type, drug_object.get_effects())
+        new_drug.add mixer(mixer)
+        append new drug to strains list
+    best_strains = []
+    for i in range (amount to return)
+        max = 0
+        best = strains[0] <- this might be stupid, not sure how to set a minimum value for an object when we aren't able to compare them easily
+        for strain in strains
+            if strain.get_mult > max
+                best = strain
+        remove best from strains
+        add best to best_strains
+    return best_strains
+    
+    1) get every possible strain that can be made out of mixers in the game
+    2) find best 'x' amount of strains by comparing their value
+    3) return a list of the best 'x' amount of strains
+```
 
 
 
