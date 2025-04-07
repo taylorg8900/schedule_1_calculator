@@ -78,6 +78,9 @@ class Drug:
             self._value = 0
         self._value = round(self._value, 2)
 
+    def get_type(self):
+        return self._type
+
     def get_mult(self):
         return self._mult
 
