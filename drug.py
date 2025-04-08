@@ -149,12 +149,12 @@ class Drug:
     def add_mixer(self, mixer):
         self._added_mixer = mixer.lower()
         self._added_effect = self._mixer_dict[self._added_mixer]
-        self._added_mult = self._value_dict[self._mixer_dict[self._added_mixer]]
-
         self.__create_modified_effects_dict(mixer)
         self.__modify_effects(mixer)
 
+        mult_before = self._mult
         self.__calc_mult()
+        self._added_mult = round(self._mult - mult_before, 2)
         self.__calc_value()
 
 

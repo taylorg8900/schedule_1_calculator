@@ -3,12 +3,18 @@ from dicts import create_mixer_dict
 import sys
 
 def main():
-    drug = Drug('weed', ['athletic', 'focused', 'thought provoking'])
-    drug.add_mixer('mega bean')
+    drug = Drug('weed', ['athletic', 'focused', 'thought provoking', 'toxic'])
+    strains = find_best_strains(drug, 2)
 
-    lines = drug.large_representation()
+
+    lines = drug.small_representation()
     for line in lines:
         print(line)
+
+    for strain in strains:
+        lines = strain.large_representation()
+        for line in lines:
+            print(line)
 
 
 
