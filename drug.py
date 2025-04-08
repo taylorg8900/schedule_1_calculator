@@ -23,6 +23,27 @@ class Drug:
         self.__calc_mult()
         self.__calc_value()
 
+    def large_representation(self):
+        lines = [
+            f'| Drug type: {self._type} |',
+            f'| Drug mult: {self._mult} |',
+            f'| Drug value: $ {self._value} |',
+            f'| Added Mixer: {self._added_mixer} |',
+            f'| Added effect: {self._added_effect} |',
+            f'| Added mult: {self._added_mult} |',
+        ]
+        for effect in self._effects:
+            lines.append(f'| {effect}  {self._effects[effect]}')
+        for effect in self._modified_effects:
+            lines.append(f'| {effect} -> {self._modified_effects[effect]} |')
+        max_amount_chars = 0
+        for line in lines:
+            if max_amount_chars < len(line):
+                max_amount_chars = len(line)
+        #     print(line)
+        # print(max_amount_chars)
+
+
     def add_mixer(self, mixer):
         self._added_mixer = mixer.lower()
         self._added_effect = self._mixer_dict[self._added_mixer]

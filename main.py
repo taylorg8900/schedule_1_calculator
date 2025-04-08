@@ -4,18 +4,19 @@ import sys
 
 def main():
     drug = Drug('weed', ['athletic', 'calming'])
-    # drug.add_mixer('mega bean')
-    best_strains = find_best_strains(drug, 3)
-    worst_strains = find_worst_strains(drug, 2)
-    strains = [] + best_strains + worst_strains
-    print(drug.get_mult())
-    print(drug.get_effects())
+    drug.add_mixer('mega bean')
+    # best_strains = find_best_strains(drug, 3)
+    # worst_strains = find_worst_strains(drug, 2)
+    # strains = [] + best_strains + worst_strains
+    # print(drug.get_mult())
+    # print(drug.get_effects())
+    drug.large_representation()
 
-    for strain in strains:
-        print()
-        print(strain.get_mult())
-        print(strain.get_added_mixer())
-        print(strain.get_effects())
+    # for strain in strains:
+    #     print()
+    #     print(strain.get_mult())
+    #     print(strain.get_added_mixer())
+    #     print(strain.get_effects())
 
 
 
