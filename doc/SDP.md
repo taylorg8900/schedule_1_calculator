@@ -285,11 +285,13 @@ In order to figure out how to structure the representations, I need to try and d
 -----------------------------
 ```
 
-String formatting
-- `>` right aligned
-- `.0%` display as percent, 0 decimal places
-- `<` left aligned
-- `<33` left aligned, 33 is total width
+After getting the representation methods done, I still need to be able to print them out horizontally. Here is the pseudocode for that:
+```commandline
+info = list of lists of strings
+for i in range size of longest list in info
+    for list in info
+        
+```
 
 # Implementation
 

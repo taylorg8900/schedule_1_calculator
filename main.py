@@ -3,18 +3,32 @@ from dicts import create_mixer_dict
 import sys
 
 def main():
-    drug = Drug('weed', ['athletic', 'focused', 'thought provoking', 'toxic'])
+    drug_type = input("Drug type: ")
+    effects = input("Effects (separate with commas): ").split(',')
+    for effect in effects:
+        effect = effect.strip()
+    drug = Drug(drug_type, effects)
     strains = find_best_strains(drug, 2)
+    strains.extend(find_worst_strains(drug, 1))
 
 
     lines = drug.small_representation()
     for line in lines:
         print(line)
 
+
+    representations = []
     for strain in strains:
-        lines = strain.large_representation()
-        for line in lines:
-            print(line)
+        representations.append(strain.large_representation())
+    representations.sort(reverse=True)
+    max_len = max(len(r) for r in representations)
+    for i in range(max_len):
+        row = ''
+        for lst in representations:
+            item = lst[i] if i < len(lst) else ''
+            row += f'{item:<5} '
+        print(row)
+
 
 
 
