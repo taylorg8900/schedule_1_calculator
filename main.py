@@ -3,7 +3,7 @@ from dicts import create_mixer_dict
 import sys
 
 def main():
-    drug = Drug('weed', ['energizing', 'focused'])
+    drug = Drug('weed', ['athletic', 'calming', 'energizing', 'focused', 'jennerising', 'laxative', 'seizure inducing', 'thought provoking'])
     drug.add_mixer('mega bean')
     # best_strains = find_best_strains(drug, 3)
     # worst_strains = find_worst_strains(drug, 2)
