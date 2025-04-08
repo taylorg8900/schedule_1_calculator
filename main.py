@@ -2,10 +2,12 @@ from drug import Drug
 from dicts import create_mixer_dict, create_typo_dict
 import sys
 
-def main():
+# TODO: be able to handle more than 3 strains printed out
 
+def main():
     drug_type = input("Drug type: ")
     effects_input = input("Effects (separate with commas!: ")
+    amount_strains = int(input("Amount of strains: "))
     typo_dict = create_typo_dict('csv-files/typo.csv', 0, 1)
     effects = []
     for effect in effects_input.split(','):
@@ -17,7 +19,7 @@ def main():
     added_mixers = 'Original Strain'
     while True:
         clear()
-        strains = find_best_strains(drug, 3)
+        strains = find_best_strains(drug, amount_strains)
         # strains.extend(find_worst_strains(drug, 1))
 
         reps = []

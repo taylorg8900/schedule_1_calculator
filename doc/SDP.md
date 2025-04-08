@@ -298,6 +298,8 @@ while true:
     else, use their choice to index into strains and set drug = Drug(strain information)
 ```
 
+The next thing to implement is stopping the drug from adding more than 8 effects. I'll have to leave that to tomorrow
+
 # Implementation
 
 # Testing / Debugging

@@ -1,5 +1,7 @@
 from dicts import create_modify_dict, create_mixer_dict, create_values_dict
 
+MAX_EFFECTS = 8
+
 class Drug:
     def __init__(self, drug_type, effects):
         self._type = drug_type
@@ -118,10 +120,11 @@ class Drug:
             string = f'| {effect:<{a}}  {self._effects[effect]:<{b}}'
             fourth_block.append(string)
 
+        c = len(self._effects)
         space = f'|{' ' * (max_amount_chars - 4)}'
         dashes = f'{'-' * max_amount_chars}'
         third_block_header = f'| {'Modified effects':<{max_amount_chars - 4}}'
-        fourth_block_header = f'| {'Effects':<{a}}  {'Mult':<{b}}'
+        fourth_block_header = f'| {f'Effects ({c})':<{a}}  {'Mult':<{b}}'
         lines = []
         lines.append(dashes)
         lines.extend(first_block)
@@ -174,7 +177,9 @@ class Drug:
                 new_effects[effect] = self._effects[effect]
 
         # We include this because if that effect already exists, we don't want to add it a second time.
-        new_effects[self._added_effect] = self._value_dict[self._mixer_dict[self._added_mixer]]
+        # We also don't want to have more than the maximum allowed number of effects on a drug.
+        if len(self._effects) < MAX_EFFECTS:
+            new_effects[self._added_effect] = self._value_dict[self._mixer_dict[self._added_mixer]]
         new_effects = dict(sorted(new_effects.items()))
         self._effects = new_effects
 
