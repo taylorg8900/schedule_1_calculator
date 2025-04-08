@@ -15,17 +15,13 @@ def main():
     strains.extend(find_worst_strains(drug, 1))
 
 
-    # lines = drug.small_representation()
-    # for line in lines:
-    #     print(line)
-
     reps = []
+    counter = 1
     for strain in strains:
-        reps.append(strain.large_representation())
-
-    # for strain in strains:
-    #     for line in strain.large_representation():
-    #         print(line)
+        representation = strain.large_representation()
+        representation.insert(0, f'STRAIN {counter}')
+        reps.append(representation)
+        counter += 1
 
     print_lists_horizontally(reps)
 
