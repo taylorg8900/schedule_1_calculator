@@ -148,12 +148,9 @@ class Drug:
 
     def add_mixer(self, mixer):
         self._added_mixer = mixer.lower()
+        self._added_effect = self._mixer_dict[self._added_mixer]
         self.__create_modified_effects_dict(mixer)
         self.__modify_effects(mixer)
-        if self._mixer_dict[self._added_mixer] not in self._effects.keys():
-            self._added_effect = self._mixer_dict[self._added_mixer]
-        else:
-            self._added_effect = ''
 
         mult_before = self._mult
         self.__calc_mult()
