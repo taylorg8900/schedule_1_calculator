@@ -2,7 +2,7 @@ from drug import Drug
 from dicts import create_mixer_dict, create_typo_dict
 import sys
 
-# TODO: be able to handle more than 3 strains printed out
+# TODO: be able to handle more than 3 strains printed out. Probably have them come in groups of 3? Define this with a global, or figure out the width of the shell during runtime
 
 def main():
     drug_type = input("Drug type: ")
