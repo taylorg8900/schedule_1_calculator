@@ -3,20 +3,19 @@ from dicts import create_mixer_dict
 import sys
 
 def main():
-    # drug_type = input("Drug type: ")
-    # effects_input = input("Effects (separate with commas): ").split(',')
-    # effects = []
-    # for effect in effects_input:
-    #     effect = effect.strip()
-    #     effects.append(effect)
+    
+    drug_type = input("Drug type: ")
+    effects_input = input("Effects (separate with commas!: ")
+    effects = []
+    for effect in effects_input.split(','):
+        effects.append(effect.strip())
 
-    drug = Drug('cocaine', ['athletic', 'foggy', 'bright eyed'])
+    drug = Drug(drug_type, effects)
     added_mixers = 'Original Strain'
     while True:
         clear()
-        strains = find_best_strains(drug, 2)
-        strains.extend(find_worst_strains(drug, 1))
-
+        strains = find_best_strains(drug, 3)
+        # strains.extend(find_worst_strains(drug, 1))
 
         reps = []
         counter = 1
@@ -35,9 +34,11 @@ def main():
         choice = int(input("Enter a strain number to repeat (0 to quit): "))
         if choice < 1:
             break
-        else:
-            added_mixers += ' + ' + strains[choice - 1].get_added_mixer()
-            drug = Drug(strains[choice - 1].get_type(), strains[choice - 1].get_effects())
+        elif choice > len(strains):
+            choice = len(strains)
+
+        added_mixers += ' + ' + strains[choice - 1].get_added_mixer()
+        drug = Drug(strains[choice - 1].get_type(), strains[choice - 1].get_effects())
 
 
 def clear():
