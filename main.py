@@ -11,19 +11,38 @@ def main():
     #     effects.append(effect)
 
     drug = Drug('cocaine', ['athletic', 'foggy', 'bright eyed'])
-    strains = find_best_strains(drug, 2)
-    strains.extend(find_worst_strains(drug, 1))
+    added_mixers = 'Original Strain'
+    while True:
+        clear()
+        strains = find_best_strains(drug, 2)
+        strains.extend(find_worst_strains(drug, 1))
 
 
-    reps = []
-    counter = 1
-    for strain in strains:
-        representation = strain.large_representation()
-        representation.insert(0, f'STRAIN {counter}')
-        reps.append(representation)
-        counter += 1
+        reps = []
+        counter = 1
+        for strain in strains:
+            representation = strain.large_representation()
+            representation.insert(0, f'STRAIN {counter}')
+            reps.append(representation)
+            counter += 1
 
-    print_lists_horizontally(reps)
+        print(added_mixers)
+        for line in drug.small_representation():
+            print(line)
+        print_lists_horizontally(reps)
+
+
+        choice = int(input("Enter a strain number to repeat (0 to quit): "))
+        if choice < 1:
+            break
+        else:
+            added_mixers += ' + ' + strains[choice - 1].get_added_mixer()
+            drug = Drug(strains[choice - 1].get_type(), strains[choice - 1].get_effects())
+
+
+def clear():
+    """clear the screen and return cursor to home position"""
+    print(end="\x1b[H\x1b[J", flush=True)
 
 def print_lists_horizontally(superlist):
     """
@@ -36,14 +55,13 @@ def print_lists_horizontally(superlist):
         line_lengths.append(max(len(item) for item in l))
         list_lengths.append(len(l))
 
-    for line in range(max(line_lengths)):
+    for line in range(max(list_lengths)):
         for representation in range(len(superlist)):
             if line < len(superlist[representation]):
                 print(f'{superlist[representation][line]:<{line_lengths[representation] + PADDING}}', end='')
             else:
                 print(f'{' ':<{line_lengths[representation] + PADDING}}', end='')
         print()
-
 
 
 def find_best_strains(drug_object, amount):
