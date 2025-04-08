@@ -1,14 +1,17 @@
 from drug import Drug
-from dicts import create_mixer_dict
+from dicts import create_mixer_dict, create_typo_dict
 import sys
 
 def main():
-    
+
     drug_type = input("Drug type: ")
     effects_input = input("Effects (separate with commas!: ")
+    typo_dict = create_typo_dict('csv-files/typo.csv', 0, 1)
     effects = []
     for effect in effects_input.split(','):
-        effects.append(effect.strip())
+        for key in typo_dict.keys():
+            if key in effect:
+                effects.append(typo_dict[key])
 
     drug = Drug(drug_type, effects)
     added_mixers = 'Original Strain'
