@@ -28,7 +28,9 @@ class Drug:
         first_block = [
             f'| Drug type:    {self._type}',
             f'| Drug mult:    {self._mult}',
-            f'| Drug value: $ {self._value}'
+            f'| Drug value: $ {self._value}',
+            f'| Drug value: $ {f'\033[32m{self._value}\033[0m'}'
+
         ]
         second_block = [
             f'| Added Mixer:  {self._added_mixer}',
@@ -36,6 +38,7 @@ class Drug:
             f'| Added mult:   {self._added_mult}',
         ]
         third_block = []
+        fourth_block = []
 
         c = 0
         d = 0
@@ -56,9 +59,40 @@ class Drug:
                 max_amount_chars = len(line)
         max_amount_chars += 2
 
-        lines = [] + first_block + second_block + third_block
+        a = 0
+        b = 0
+        for effect in self._effects:
+            if len(str(effect)) > a:
+                a = len(str(effect))
+            if len(str(self._effects[effect])) > b:
+                b = len(str(self._effects[effect]))
+
+        for effect in self._effects:
+            string = f'| {effect:<{a}}  {self._effects[effect]:<{b}}'
+            fourth_block.append(string)
+
+        space = f'|{' ' * (max_amount_chars - 4)}'
+        dashes = f'{'-' * max_amount_chars}'
+        third_block_header = f'| {'Modified effects':<{max_amount_chars - 4}}'
+        fourth_block_header = f'| {'Effects':<{a}}  {'Mult':<{b}}'
+        lines = []
+        lines.append(dashes)
+        lines.extend(first_block)
+        lines.append(space)
+        lines.extend(second_block)
+        lines.append(space)
+        lines.append(third_block_header)
+        lines.extend(third_block)
+        lines.append(space)
+        lines.append(fourth_block_header)
+        lines.extend(fourth_block)
+        lines.append(dashes)
+
         for line in lines:
-            print(f'{line} {' ' * (max_amount_chars - len(line) - 2)}|')
+            if line.startswith('|'):
+                print(f'{line} {' ' * (max_amount_chars - len(line) - 2)}|')
+            else:
+                print(f'{'-' * max_amount_chars}')
 
 
 
