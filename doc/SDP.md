@@ -285,6 +285,11 @@ In order to figure out how to structure the representations, I need to try and d
 -----------------------------
 ```
 
+String formatting
+- `>` right aligned
+- `.0%` display as percent, 0 decimal places
+- `<` left aligned
+- `<33` left aligned, 33 is total width
 
 # Implementation
 

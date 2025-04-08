@@ -24,24 +24,83 @@ class Drug:
         self.__calc_value()
 
     def large_representation(self):
-        lines = [
-            f'| Drug type: {self._type} |',
-            f'| Drug mult: {self._mult} |',
-            f'| Drug value: $ {self._value} |',
+
+        first_block = [
+            f'| Drug type:    {self._type} |',
+            f'| Drug mult:    {self._mult} |',
+            f'| Drug value: $ {self._value} |'
+        ]
+        second_block = [
             f'| Added Mixer: {self._added_mixer} |',
             f'| Added effect: {self._added_effect} |',
             f'| Added mult: {self._added_mult} |',
         ]
-        for effect in self._effects:
-            lines.append(f'| {effect}  {self._effects[effect]}')
+        third_block = []
         for effect in self._modified_effects:
-            lines.append(f'| {effect} -> {self._modified_effects[effect]} |')
+            third_block.append(f'| {effect} -> {self._modified_effects[effect]} |')
+        fourth_block = []
+        for effect in self._effects:
+            fourth_block.append(f'| {effect}  {self._effects[effect]}')
+
         max_amount_chars = 0
-        for line in lines:
+        all_lines = [] + first_block + second_block + third_block + fourth_block
+        for line in all_lines:
             if max_amount_chars < len(line):
                 max_amount_chars = len(line)
-        #     print(line)
-        # print(max_amount_chars)
+
+        a = 0
+        for element in [self._type, self._mult, self._value]:
+            if len(str(element)) > a:
+                a = len(str(element))
+
+        first_block_representation = [
+            f'{'-' * max_amount_chars}',
+            f'| Drug type:    {self._type:<{max_amount_chars - 16}} |',
+            f'| Drug mult:    {self._mult:<{max_amount_chars - 16}} |',
+            f'| Drug value: $ {self._value:<{max_amount_chars - 16}} |',
+            f'|{' ' * max_amount_chars}|'
+        ]
+
+        b = 0
+        for element in [self._added_mixer, self._added_effect, self._added_mult]:
+            if len(str(element)) > b:
+                b = len(str(element))
+
+        second_block_representation = [
+            f'| Added mixer:  {self._added_mixer:<{max_amount_chars - 16}} |',
+            f'| Added effect: {self._added_effect:<{max_amount_chars - 16}} |',
+            f'| Added mult:   {self._added_mult:<{max_amount_chars - 16}} |',
+            f'|{' ' * max_amount_chars}|'
+        ]
+
+        c = 0
+        d = 0
+        for effect in self._modified_effects:
+            if len(str(effect)) > c:
+                c = len(str(effect))
+            if len(self._modified_effects[effect]) > d:
+                d = len(self._modified_effects[effect])
+
+        third_block_representation = [
+            f'| Modified effects{' ' * (max_amount_chars - 18)} |'
+        ]
+
+        e = max_amount_chars - c - d
+
+        for effect in self._modified_effects:
+            print(f"c={c} ({type(c)}), e={e} ({type(e)})")
+
+            string = f'| {effect:<{c}} -> {self._modified_effects[effect]:<{e}}'
+            third_block_representation.append(string)
+
+
+        lines = [] + first_block_representation + second_block_representation + third_block_representation
+        for line in lines:
+            print(line)
+
+        for line in third_block:
+            print(line)
+
 
 
     def add_mixer(self, mixer):
