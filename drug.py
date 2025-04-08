@@ -50,12 +50,8 @@ class Drug:
             third_block.append(string)
 
 
-        fourth_block = []
-        for effect in self._effects:
-            fourth_block.append(f'| {effect}  {self._effects[effect]}')
-
         max_amount_chars = 0
-        all_lines = [] + first_block + second_block + third_block + fourth_block
+        all_lines = [] + first_block + second_block + third_block
         for line in all_lines:
             if max_amount_chars < len(line):
                 max_amount_chars = len(line)
