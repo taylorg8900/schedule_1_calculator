@@ -23,6 +23,50 @@ class Drug:
         self.__calc_mult()
         self.__calc_value()
 
+    def small_representation(self):
+        first_block = [
+            f'| Drug type:    {self._type}',
+            f'| Drug mult:    {self._mult}',
+            f'| Drug value: $ {self._value}',
+        ]
+        second_block = []
+        a = 0
+        b = 0
+        for effect in self._effects:
+            if len(str(effect)) > a:
+                a = len(str(effect))
+            if len(str(self._effects[effect])) > b:
+                b = len(str(self._effects[effect]))
+
+        for effect in self._effects:
+            string = f'| {effect:<{a}}  {self._effects[effect]:<{b}}'
+            second_block.append(string)
+
+        max_amount_chars = 0
+        all_lines = [] + first_block + second_block
+        for line in all_lines:
+            if max_amount_chars < len(line):
+                max_amount_chars = len(line)
+        max_amount_chars += 2
+
+        space = f'|{' ' * (max_amount_chars - 4)}'
+        dashes = f'{'-' * max_amount_chars}'
+        second_block_header = f'| {'Effects':<{a}}  {'Mult':<{b}}'
+        lines = []
+        lines.append(dashes)
+        lines.extend(first_block)
+        lines.append(space)
+        lines.append(second_block_header)
+        lines.extend(second_block)
+        lines.append(dashes)
+
+        for line in lines:
+            if line.startswith('|'):
+                print(f'{line} {' ' * (max_amount_chars - len(line) - 2)}|')
+            else:
+                print(f'{'-' * max_amount_chars}')
+
+
     def large_representation(self):
 
         first_block = [

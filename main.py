@@ -7,6 +7,7 @@ def main():
     drug.add_mixer('mega bean')
 
     drug.large_representation()
+    drug.small_representation()
 
 
 
@@ -61,10 +62,3 @@ def find_worst_strains(drug_object, amount):
     return worst_strains
 
 main()
-
-
-# print("\033[31mThis is red text\033[0m")
-# print("\033[32mThis is green text\033[0m")
-# print("\033[36mThis is cyan text\033[0m")
-
-
