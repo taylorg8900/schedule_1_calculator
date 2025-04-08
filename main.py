@@ -3,34 +3,50 @@ from dicts import create_mixer_dict
 import sys
 
 def main():
-    drug_type = input("Drug type: ")
-    effects = input("Effects (separate with commas): ").split(',')
-    for effect in effects:
-        effect = effect.strip()
-    drug = Drug(drug_type, effects)
+    # drug_type = input("Drug type: ")
+    # effects_input = input("Effects (separate with commas): ").split(',')
+    # effects = []
+    # for effect in effects_input:
+    #     effect = effect.strip()
+    #     effects.append(effect)
+
+    drug = Drug('cocaine', ['athletic', 'foggy', 'bright eyed'])
     strains = find_best_strains(drug, 2)
     strains.extend(find_worst_strains(drug, 1))
 
 
-    lines = drug.small_representation()
-    for line in lines:
-        print(line)
+    # lines = drug.small_representation()
+    # for line in lines:
+    #     print(line)
 
-
-    representations = []
+    reps = []
     for strain in strains:
-        representations.append(strain.large_representation())
-    representations.sort(reverse=True)
-    max_len = max(len(r) for r in representations)
-    for i in range(max_len):
-        row = ''
-        for lst in representations:
-            item = lst[i] if i < len(lst) else ''
-            row += f'{item:<5} '
-        print(row)
+        reps.append(strain.large_representation())
 
+    # for strain in strains:
+    #     for line in strain.large_representation():
+    #         print(line)
 
+    print_lists_horizontally(reps)
 
+def print_lists_horizontally(superlist):
+    """
+    Used to print each element of each list next to each other, in a horizontal fashion.
+    """
+    PADDING = 2
+    line_lengths = []
+    list_lengths = []
+    for l in superlist:
+        line_lengths.append(max(len(item) for item in l))
+        list_lengths.append(len(l))
+
+    for line in range(max(line_lengths)):
+        for representation in range(len(superlist)):
+            if line < len(superlist[representation]):
+                print(f'{superlist[representation][line]:<{line_lengths[representation] + PADDING}}', end='')
+            else:
+                print(f'{' ':<{line_lengths[representation] + PADDING}}', end='')
+        print()
 
 
 
