@@ -285,12 +285,17 @@ In order to figure out how to structure the representations, I need to try and d
 -----------------------------
 ```
 
-After getting the representation methods done, I still need to be able to print them out horizontally. Here is the pseudocode for that:
+After getting the representation methods done, and figuring out how to print them horizontally, I still need a way to have a while loop with
+a way to select which strain to continue on. Here is the pseudocode for that:
 ```commandline
-info = list of lists of strings
-for i in range size of longest list in info
-    for list in info
-        
+drug = Drug(all of the input things)
+while true:
+    get strains using the find_best and find_worst functions
+    print the little representation for drug
+    send these into the print horizontally function
+    ask user for a choice
+    if choice = 0, break while loop
+    else, use their choice to index into strains and set drug = Drug(strain information)
 ```
 
 # Implementation
