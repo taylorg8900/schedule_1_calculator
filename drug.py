@@ -29,7 +29,6 @@ class Drug:
             f'| Drug type:    {self._type}',
             f'| Drug mult:    {self._mult}',
             f'| Drug value: $ {self._value}',
-            f'| Drug value: $ {f'\033[32m{self._value}\033[0m'}'
 
         ]
         second_block = [
