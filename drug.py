@@ -26,14 +26,14 @@ class Drug:
     def large_representation(self):
 
         first_block = [
-            f'| Drug type:    {self._type} |',
-            f'| Drug mult:    {self._mult} |',
-            f'| Drug value: $ {self._value} |'
+            f'| Drug type:    {self._type}',
+            f'| Drug mult:    {self._mult}',
+            f'| Drug value: $ {self._value}'
         ]
         second_block = [
-            f'| Added Mixer: {self._added_mixer} |',
-            f'| Added effect: {self._added_effect} |',
-            f'| Added mult: {self._added_mult} |',
+            f'| Added Mixer:  {self._added_mixer}',
+            f'| Added effect: {self._added_effect}',
+            f'| Added mult:   {self._added_mult}',
         ]
         third_block = []
 
@@ -46,84 +46,20 @@ class Drug:
                 d = len(self._modified_effects[effect])
 
         for effect in self._modified_effects:
-            string = f'| {effect:<{c}} -> {self._modified_effects[effect]:<{d}} |'
+            string = f'| {effect:<{c}} -> {self._modified_effects[effect]:<{d}}'
             third_block.append(string)
-
 
         max_amount_chars = 0
         all_lines = [] + first_block + second_block + third_block
         for line in all_lines:
             if max_amount_chars < len(line):
                 max_amount_chars = len(line)
+        max_amount_chars += 2
 
-        a = 0
-        for element in [self._type, self._mult, self._value]:
-            if len(str(element)) > a:
-                a = len(str(element))
-
-        first_block_representation = [
-            f'{'-' * max_amount_chars}',
-            f'| Drug type:    {self._type:<{max_amount_chars - 16}} |',
-            f'| Drug mult:    {self._mult:<{max_amount_chars - 16}} |',
-            f'| Drug value: $ {self._value:<{max_amount_chars - 16}} |',
-            f'|{' ' * max_amount_chars}|'
-        ]
-
-        b = 0
-        for element in [self._added_mixer, self._added_effect, self._added_mult]:
-            if len(str(element)) > b:
-                b = len(str(element))
-
-        second_block_representation = [
-            f'| Added mixer:  {self._added_mixer:<{max_amount_chars - 16}} |',
-            f'| Added effect: {self._added_effect:<{max_amount_chars - 16}} |',
-            f'| Added mult:   {self._added_mult:<{max_amount_chars - 16}} |',
-            f'|{' ' * max_amount_chars}|'
-        ]
-
-        c = 0
-        d = 0
-        for effect in self._modified_effects:
-            if len(str(effect)) > c:
-                c = len(str(effect))
-            if len(self._modified_effects[effect]) > d:
-                d = len(self._modified_effects[effect])
-
-        third_block_representation = [
-            f'| Modified effects{' ' * (max_amount_chars - 18)} |'
-        ]
-
-        e = max_amount_chars - c - d
-        print(f'c: {c}')
-        print(f'd: {d}')
-        print(f'e: {e}')
-
-        for effect in self._modified_effects:
-            # print(f"c={c} ({type(c)}), e={e} ({type(e)})")
-            string = f'| {effect:<{c}} -> {self._modified_effects[effect]}'
-            string = string + (' ' * (max_amount_chars - len(string) - 1)) + '|'
-
-            third_block_representation.append(string)
-
-        f = 0
-        for effect in self._effects:
-            if len(str(effect)) > f:
-                f = len(str(effect))
-
-        fourth_block_representation = [
-            f'|{' ' * max_amount_chars}|',
-            f'| {'Effects':<{f}}  Mult{' ' * (max_amount_chars - f - 8)} |'
-        ]
-
-        for effect in self._effects:
-            string = f'| {effect:<{f}}  {self._effects[effect]}{' ' * (max_amount_chars - 2 - f - 2 - len(str(self._effects[effect])))}|'
-            fourth_block_representation.append(string)
-        fourth_block_representation.append(f'{'-' * max_amount_chars}')
-
-        print(max_amount_chars)
-        lines = [] + first_block_representation + second_block_representation + third_block_representation + fourth_block_representation
+        lines = [] + first_block + second_block + third_block
         for line in lines:
-            print(line)
+            print(f'{line} {' ' * (max_amount_chars - len(line) - 2)}|')
+
 
 
 
