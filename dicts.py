@@ -67,3 +67,25 @@ def create_mixer_dict(filename, key_index, value_index):
         dict[mixer] = effect
     f.close()
     return dict
+
+def create_typo_dict(filename, key_index, value_index):
+    '''
+    Creates a dictionary to make it easier to input effects.
+    Each key should be the shortest amount of characters that can reasonably identify the value string.
+    For example:
+    dict = {
+        'ad': 'addy',
+        'ban': 'banana',
+        'bat': 'battery'
+    }
+    '''
+    f = open(filename)
+    f.readline()
+    dict = {}
+    for line in f:
+        fields = line.split(',')
+        key = fields[key_index].strip()
+        value = fields[value_index].strip()
+        dict[key] = value
+    f.close()
+    return dict
