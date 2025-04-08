@@ -60,11 +60,15 @@ class Drug:
         lines.extend(second_block)
         lines.append(dashes)
 
+        lines_to_return = []
+
         for line in lines:
             if line.startswith('|'):
-                print(f'{line} {' ' * (max_amount_chars - len(line) - 2)}|')
+                lines_to_return.append(f'{line} {' ' * (max_amount_chars - len(line) - 2)}|')
             else:
-                print(f'{'-' * max_amount_chars}')
+                lines_to_return.append(f'{'-' * max_amount_chars}')
+
+        return lines_to_return
 
 
     def large_representation(self):
@@ -131,15 +135,15 @@ class Drug:
         lines.extend(fourth_block)
         lines.append(dashes)
 
+        lines_to_return = []
+
         for line in lines:
             if line.startswith('|'):
-                print(f'{line} {' ' * (max_amount_chars - len(line) - 2)}|')
+                lines_to_return.append(f'{line} {' ' * (max_amount_chars - len(line) - 2)}|')
             else:
-                print(f'{'-' * max_amount_chars}')
+                lines_to_return.append(f'{'-' * max_amount_chars}')
 
-
-
-
+        return lines_to_return
 
 
     def add_mixer(self, mixer):

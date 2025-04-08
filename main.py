@@ -6,8 +6,9 @@ def main():
     drug = Drug('weed', ['athletic', 'focused', 'thought provoking'])
     drug.add_mixer('mega bean')
 
-    drug.large_representation()
-    drug.small_representation()
+    lines = drug.large_representation()
+    for line in lines:
+        print(line)
 
 
 
