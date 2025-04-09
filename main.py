@@ -78,20 +78,21 @@ def clear():
     """clear the screen and return cursor to home position"""
     print(end="\x1b[H\x1b[J", flush=True)
 
+
 def print_lists_horizontally(superlist):
     """
-    Prints each element of each list next to each other, horizontally in chunks.
-    Will print in groups, based off of global variable MAX_HORIZONTAL_REPRESENTATIONS
-    I did ask chatGPT to rewrite previous version of this to include the group printing functionality.
+    Prints each element of each list next to each other, horizontally in groups.
+    Dynamically sizes based on terminal width.
     """
     PADDING = 2
+    terminal_width = os.get_terminal_size().columns
     list_lengths = [len(l) for l in superlist]
     line_lengths = [max((len(item) for item in l), default=0) for l in superlist]
-    amount_horizontal_rep = split_amount(len(superlist), os.get_terminal_size().columns // max(line_lengths))
+
+    amount_horizontal_rep = get_fitting_column_groups(line_lengths, terminal_width, PADDING)
 
     index = 0
     for group_size in amount_horizontal_rep:
-        # Get the current group of lists and their metadata
         current_lists = superlist[index: index + group_size]
         current_line_lengths = line_lengths[index : index + group_size]
         current_list_lengths = list_lengths[index: index + group_size]
@@ -103,10 +104,36 @@ def print_lists_horizontally(superlist):
                     print(f'{current_lists[i][line]:<{current_line_lengths[i] + PADDING}}', end='')
                 else:
                     print(' ' * (current_line_lengths[i] + PADDING), end='')
-            print()  # new line after each row in this chunk
+            print()
 
-        print()  # extra line between chunks
+        print()
         index += group_size
+
+def get_fitting_column_groups(widths, max_width, padding):
+    """
+    Returns a list of group sizes that fit within the terminal width,
+    using the actual widths of each column.
+    """
+    groups = []
+    current_width = 0
+    current_group_size = 0
+
+    for w in widths:
+        col_width = w + padding
+        if current_width + col_width <= max_width:
+            current_width += col_width
+            current_group_size += 1
+        else:
+            if current_group_size > 0:
+                groups.append(current_group_size)
+            current_width = col_width
+            current_group_size = 1
+
+    if current_group_size > 0:
+        groups.append(current_group_size)
+
+    return groups
+
 
 def find_best_strain_recursively(drug_object, amount):
     pass
