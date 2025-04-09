@@ -8,6 +8,8 @@ def main():
     drug_type = input("Drug type: ")
     effects_input = input("Effects (separate with commas!: ")
     amount_strains = int(input("Amount of strains: "))
+
+    # Get 'effects' argument to create our drug object
     typo_dict = create_typo_dict('csv-files/typo.csv', 0, 1)
     effects = []
     for effect in effects_input.split(','):
@@ -16,12 +18,15 @@ def main():
                 effects.append(typo_dict[key])
 
     drug = Drug(drug_type, effects)
-    added_mixers = 'Original Strain'
+    drugs = []
+    mixers = []
+    drugs.append(drug)
+
     while True:
         clear()
-        strains = find_best_strains(drug, amount_strains)
-        # strains.extend(find_worst_strains(drug, 1))
+        strains = find_best_strains(drugs[-1], amount_strains)
 
+        # Create names for each strain
         reps = []
         counter = 1
         for strain in strains:
@@ -30,20 +35,32 @@ def main():
             reps.append(representation)
             counter += 1
 
-        print(added_mixers)
-        for line in drug.small_representation():
+        # Print all information to screen
+        print(mixers)
+        print(drugs[0].get_effects(), end='')
+        for d in range(len(mixers)):
+            print(' + ' + mixers[d], end='')
+        print()
+
+
+        for line in drugs[-1].small_representation():
             print(line)
         print_lists_horizontally(reps)
 
+        choice = input("Enter a strain number to repeat (Q to quit) (0 to go back by one strain): ")
 
-        choice = int(input("Enter a strain number to repeat (0 to quit): "))
-        if choice < 1:
+        if choice.isdigit():
+            if int(choice) < 1:
+                drugs.pop(-1)
+                mixers.pop(-1)
+                continue
+            elif int(choice) > len(strains):
+                choice = len(strains)
+            drug = Drug(strains[int(choice) - 1].get_type(), strains[int(choice) - 1].get_effects())
+            drugs.append(drug)
+            mixers.append(strains[int(choice) - 1].get_added_mixer())
+        else:
             break
-        elif choice > len(strains):
-            choice = len(strains)
-
-        added_mixers += ' + ' + strains[choice - 1].get_added_mixer()
-        drug = Drug(strains[choice - 1].get_type(), strains[choice - 1].get_effects())
 
 
 def clear():
