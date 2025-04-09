@@ -43,9 +43,10 @@ class Drug:
         for effect in self._effects:
             string = f'| {effect:<{a}}  {self._effects[effect]:<{b}}'
             second_block.append(string)
+        second_block_header = f'| {f'Effects ({len(self._effects)})':<{a}}  {'Mult':<{b}}'
 
         max_amount_chars = 0
-        all_lines = [] + first_block + second_block
+        all_lines = [second_block_header] + first_block + second_block
         for line in all_lines:
             if max_amount_chars < len(line):
                 max_amount_chars = len(line)
@@ -53,7 +54,6 @@ class Drug:
 
         space = f'|{' ' * (max_amount_chars - 4)}'
         dashes = f'{'-' * max_amount_chars}'
-        second_block_header = f'| {'Effects':<{a}}  {'Mult':<{b}}'
         lines = []
         lines.append(dashes)
         lines.extend(first_block)
