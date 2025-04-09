@@ -1,9 +1,9 @@
 from drug import Drug
 from dicts import create_mixer_dict, create_typo_dict
 import sys
+import os
 
 # TODO: Create some way for algorithm to search recursively n amount of times for best value strain, then print it out
-MAX_HORIZONTAL_REPRESENTATIONS = 5
 
 def main():
     drug_type = input("Drug type: ")
@@ -77,9 +77,9 @@ def print_lists_horizontally(superlist):
     I did ask chatGPT to rewrite previous version of this to include the group printing functionality.
     """
     PADDING = 2
-    amount_horizontal_rep = split_amount(len(superlist), MAX_HORIZONTAL_REPRESENTATIONS)
     list_lengths = [len(l) for l in superlist]
     line_lengths = [max((len(item) for item in l), default=0) for l in superlist]
+    amount_horizontal_rep = split_amount(len(superlist), os.get_terminal_size().columns // max(line_lengths))
 
     index = 0
     for group_size in amount_horizontal_rep:
