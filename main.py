@@ -40,10 +40,11 @@ def main():
         print(drugs[0].get_effects(), end='')
         for d in range(len(mixers)):
             print(' + ' + mixers[d], end='')
-        print('\n')
+        print()
 
         for line in drugs[-1].small_representation():
             print(line)
+        print('\n')
 
         print_lists_horizontally(reps)
 
@@ -51,6 +52,8 @@ def main():
 
         if choice.isdigit():
             if int(choice) < 1:
+                if len(drugs) == 1: # Never let user get rid of first drug in drugs
+                    continue
                 drugs.pop(-1)
                 mixers.pop(-1)
                 continue
@@ -112,14 +115,15 @@ def find_best_strains(drug_object, amount):
 
     # Compare all new strains to find which ones have the best value
     for i in range(amount):
-        max = 0
-        best = strains[0]
-        for strain in strains:
-            if strain.get_mult() > max:
-                max = strain.get_mult()
-                best = strain
-        strains.remove(best)
-        best_strains.append(best)
+        if i < len(mixer_dict.keys()): # Never let user ask for more strains than mixers in the game
+            max = 0
+            best = strains[0]
+            for strain in strains:
+                if strain.get_mult() > max:
+                    max = strain.get_mult()
+                    best = strain
+            strains.remove(best)
+            best_strains.append(best)
     return best_strains
 
 
