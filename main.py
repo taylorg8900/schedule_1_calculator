@@ -7,7 +7,7 @@ import os
 
 def main():
     drug_type = input("Drug type: ")
-    effects_input = input("Effects (separate with commas!: ")
+    effects_input = input("Effects (separate with commas!): ")
     amount_strains = int(input("Amount of strains: "))
 
     # Get 'effects' argument to create our drug object
@@ -37,7 +37,7 @@ def main():
             counter += 1
 
         # Print all information to screen
-        print(drugs[0].get_effects(), end='')
+        print('\nCURRENT STRAIN:', drugs[0].get_effects(), end='')
         for d in range(len(mixers)):
             print(' + ' + mixers[d], end='')
         print()
@@ -63,6 +63,8 @@ def main():
             drugs.append(drug)
             mixers.append(strains[int(choice) - 1].get_added_mixer())
         else:
+            if choice == '':
+                continue
             break
 
 
