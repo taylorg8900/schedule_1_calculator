@@ -40,7 +40,7 @@ def main():
         print(drugs[0].get_effects(), end='')
         for d in range(len(mixers)):
             print(' + ' + mixers[d], end='')
-        print()
+        print('\n')
 
         for line in drugs[-1].small_representation():
             print(line)
@@ -69,23 +69,33 @@ def clear():
 
 def print_lists_horizontally(superlist):
     """
-    Used to print each element of each list next to each other, in a horizontal fashion.
+    Prints each element of each list next to each other, horizontally in chunks.
+    Will print in groups, based off of global variable MAX_HORIZONTAL_REPRESENTATIONS
+    I did ask chatGPT to rewrite previous version of this to include the group printing functionality.
     """
     PADDING = 2
     amount_horizontal_rep = split_amount(len(superlist), MAX_HORIZONTAL_REPRESENTATIONS)
-    line_lengths = []
-    list_lengths = []
-    for l in superlist:
-        line_lengths.append(max(len(item) for item in l))
-        list_lengths.append(len(l))
+    list_lengths = [len(l) for l in superlist]
+    line_lengths = [max((len(item) for item in l), default=0) for l in superlist]
 
-    for line in range(max(list_lengths)):
-        for representation in range(len(superlist)):
-            if line < len(superlist[representation]):
-                print(f'{superlist[representation][line]:<{line_lengths[representation] + PADDING}}', end='')
-            else:
-                print(f'{' ':<{line_lengths[representation] + PADDING}}', end='')
-        print()
+    index = 0
+    for group_size in amount_horizontal_rep:
+        # Get the current group of lists and their metadata
+        current_lists = superlist[index: index + group_size]
+        current_line_lengths = line_lengths[index : index + group_size]
+        current_list_lengths = list_lengths[index: index + group_size]
+        max_lines = max(current_list_lengths)
+
+        for line in range(max_lines):
+            for i in range(group_size):
+                if line < len(current_lists[i]):
+                    print(f'{current_lists[i][line]:<{current_line_lengths[i] + PADDING}}', end='')
+                else:
+                    print(' ' * (current_line_lengths[i] + PADDING), end='')
+            print()  # new line after each row in this chunk
+
+        print()  # extra line between chunks
+        index += group_size
 
 
 def find_best_strains(drug_object, amount):
