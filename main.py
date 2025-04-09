@@ -3,6 +3,7 @@ from dicts import create_mixer_dict, create_typo_dict
 import sys
 
 # TODO: be able to handle more than 3 strains printed out. Probably have them come in groups of 3? Define this with a global, or figure out the width of the shell during runtime
+MAX_HORIZONTAL_REPRESENTATIONS = 5
 
 def main():
     drug_type = input("Drug type: ")
@@ -36,15 +37,14 @@ def main():
             counter += 1
 
         # Print all information to screen
-        print(mixers)
         print(drugs[0].get_effects(), end='')
         for d in range(len(mixers)):
             print(' + ' + mixers[d], end='')
         print()
 
-
         for line in drugs[-1].small_representation():
             print(line)
+
         print_lists_horizontally(reps)
 
         choice = input("Enter a strain number to repeat (Q to quit) (0 to go back by one strain): ")
@@ -72,6 +72,7 @@ def print_lists_horizontally(superlist):
     Used to print each element of each list next to each other, in a horizontal fashion.
     """
     PADDING = 2
+    amount_horizontal_rep = split_amount(len(superlist), MAX_HORIZONTAL_REPRESENTATIONS)
     line_lengths = []
     list_lengths = []
     for l in superlist:
@@ -134,5 +135,12 @@ def find_worst_strains(drug_object, amount):
         strains.remove(worst)
         worst_strains.append(worst)
     return worst_strains
+
+def split_amount(amount, divisor):
+    result = [divisor] * (amount // divisor)
+    remainder = amount % divisor
+    if remainder:
+        result.append(remainder)
+    return result
 
 main()
