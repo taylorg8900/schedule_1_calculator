@@ -2,7 +2,7 @@ from drug import Drug
 from dicts import create_mixer_dict, create_typo_dict
 import sys
 
-# TODO: be able to handle more than 3 strains printed out. Probably have them come in groups of 3? Define this with a global, or figure out the width of the shell during runtime
+# TODO: Create some way for algorithm to search recursively n amount of times for best value strain, then print it out
 MAX_HORIZONTAL_REPRESENTATIONS = 5
 
 def main():
@@ -100,6 +100,8 @@ def print_lists_horizontally(superlist):
         print()  # extra line between chunks
         index += group_size
 
+def find_best_strain_recursively(drug_object, amount):
+    pass
 
 def find_best_strains(drug_object, amount):
     mixer_dict = create_mixer_dict('csv-files/mixer.csv', 0, 1)
