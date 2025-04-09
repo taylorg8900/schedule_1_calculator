@@ -101,13 +101,6 @@ class Drug:
             string = f'| {effect:<{c}} -> {self._modified_effects[effect]:<{d}}'
             third_block.append(string)
 
-        max_amount_chars = 0
-        all_lines = [] + first_block + second_block + third_block
-        for line in all_lines:
-            if max_amount_chars < len(line):
-                max_amount_chars = len(line)
-        max_amount_chars += 2
-
         a = 0
         b = 0
         for effect in self._effects:
@@ -119,6 +112,13 @@ class Drug:
         for effect in self._effects:
             string = f'| {effect:<{a}}  {self._effects[effect]:<{b}}'
             fourth_block.append(string)
+
+        max_amount_chars = 0
+        all_lines = [] + first_block + second_block + third_block + fourth_block
+        for line in all_lines:
+            if max_amount_chars < len(line):
+                max_amount_chars = len(line)
+        max_amount_chars += 2
 
         c = len(self._effects)
         space = f'|{' ' * (max_amount_chars - 4)}'
