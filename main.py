@@ -22,6 +22,7 @@ def main():
     drugs = []
     mixers = []
     drugs.append(drug)
+    strain_tracker = []
 
     while True:
         clear()
@@ -40,6 +41,9 @@ def main():
         print('\nCURRENT STRAIN:', drugs[0].get_effects(), end='')
         for d in range(len(mixers)):
             print(' + ' + mixers[d], end='')
+        print('\nCurrent strain', end='')
+        for strain in strain_tracker:
+            print(' + ' + str(strain), end='')
         print()
 
         for line in drugs[-1].small_representation():
@@ -48,22 +52,23 @@ def main():
 
         print_lists_horizontally(reps)
 
-        choice = input("Enter a strain number to repeat (Q to quit) (0 to go back by one strain): ")
+        choice = input("Enter a strain number to repeat (Q to quit) (press Enter to go back by one strain): ")
 
         if choice.isdigit():
             if int(choice) < 1:
                 if len(drugs) == 1: # Never let user get rid of first drug in drugs
                     continue
-                drugs.pop(-1)
-                mixers.pop(-1)
-                continue
             elif int(choice) > len(strains):
                 choice = len(strains)
             drug = Drug(strains[int(choice) - 1].get_type(), strains[int(choice) - 1].get_effects())
             drugs.append(drug)
             mixers.append(strains[int(choice) - 1].get_added_mixer())
+            strain_tracker.append(int(choice))
         else:
             if choice == '':
+                drugs.pop(-1)
+                mixers.pop(-1)
+                strain_tracker.pop(-1)
                 continue
             break
 
