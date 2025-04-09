@@ -302,8 +302,14 @@ I need a function to find the best strain recursively, at a max depth specified 
 searching at a depth of 5 is already a million function calls.
 
 ```commandline
-def find_best_strain_recursively(drug_object, amount):
-
+def find_best_strain_recursively(drug_object, iterations):
+    base case: iterations - 1 = 0
+    max = 0
+    for strain in possible strains
+        max2 = find_best_strain_recursively(strain, iterations - 1)
+        if max2 > max
+            max = max2
+    return max
 ```
 
 The next thing to implement is stopping the drug from adding more than 8 effects. I'll have to leave that to tomorrow

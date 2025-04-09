@@ -135,8 +135,8 @@ def get_fitting_column_groups(widths, max_width, padding):
     return groups
 
 
-def find_best_strain_recursively(drug_object, amount):
-    pass
+
+
 
 def find_best_strains(drug_object, amount):
     mixer_dict = create_mixer_dict('csv-files/mixer.csv', 0, 1)
