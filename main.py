@@ -56,8 +56,7 @@ def main():
 
         if choice.isdigit():
             if int(choice) < 1:
-                if len(drugs) == 1: # Never let user get rid of first drug in drugs
-                    continue
+                continue
             elif int(choice) > len(strains):
                 choice = len(strains)
             drug = Drug(strains[int(choice) - 1].get_type(), strains[int(choice) - 1].get_effects())
@@ -66,6 +65,8 @@ def main():
             strain_tracker.append(int(choice))
         else:
             if choice == '':
+                if len(drugs) == 1:  # Never let user get rid of first drug in drugs
+                    continue
                 drugs.pop(-1)
                 mixers.pop(-1)
                 strain_tracker.pop(-1)
