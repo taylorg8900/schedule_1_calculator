@@ -1,14 +1,26 @@
-from dicts import create_mixer_dict
+from dicts import create_mixer_dict, create_typo_dict
 from drug import Drug
 import time
 
 
 def main():
     mixer_dict = create_mixer_dict('csv-files/mixer.csv', 0, 1)
+    drug_type = input("Drug type: ")
+    effects_input = input("Effects (separate with commas!): ")
+    depth = int(input("Enter a recursion depth: "))
 
-    drug = Drug('meth')
+    # Get 'effects' argument to create our drug object
+    typo_dict = create_typo_dict('csv-files/typo.csv', 0, 1)
+    effects = []
+    for effect in effects_input.split(','):
+        for key in typo_dict.keys():
+            if key in effect:
+                effects.append(typo_dict[key])
+
+    drug = Drug(drug_type, effects)
+    drug = Drug(drug_type, effects)
     before = time.time()
-    final_value, mixer_path = find_best_strain_recursively(drug, mixer_dict, 6)
+    final_value, mixer_path = find_best_strain_recursively(drug, mixer_dict, depth)
     after = time.time()
     print(f"\nDone in {after - before:.3f} seconds!")
     print(f"Best value: {final_value}")
